@@ -1,3 +1,6 @@
 [submodule "main_repo"]
 	path = main_repo
 	url = https://github.com/deokgyun-micron/main_repo.git
+[submodule "config"]
+	path = config
+	url = https://github.com/deokgyun-micron/config.git
