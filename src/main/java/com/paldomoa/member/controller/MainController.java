@@ -1,4 +1,4 @@
-package com.paldomoa.controller;
+package com.paldomoa.member.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

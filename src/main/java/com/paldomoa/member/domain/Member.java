@@ -1,4 +1,4 @@
-package com.paldomoa.domain;
+package com.paldomoa.member.domain;
 
 import com.paldomoa.common.domain.BaseTimeEntity;
 import jakarta.persistence.*;

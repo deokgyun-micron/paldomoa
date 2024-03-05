@@ -1,8 +1,9 @@
-package com.paldomoa.controller;
+package com.paldomoa.member.controller;
 
-import com.paldomoa.dto.member.MemberGetResponse;
-import com.paldomoa.dto.member.MemberSaveRequest;
-import com.paldomoa.dto.member.MemberSaveResponse;
+import com.paldomoa.auth.annotation.Member;
+import com.paldomoa.member.dto.member.MemberGetResponse;
+import com.paldomoa.member.dto.member.MemberSaveRequest;
+import com.paldomoa.member.dto.member.MemberSaveResponse;
 import com.paldomoa.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -31,8 +32,7 @@ public class MemberController {
 
     @GetMapping("/{id}")
     public ResponseEntity<MemberGetResponse> getCurrentUser(@PathVariable(name = "id") Long id) {
-        log.info("여기다");
-        return ResponseEntity.ok(MemberGetResponse.of(memberService.getMember(id)));
+        return ResponseEntity.ok().body(MemberGetResponse.of(memberService.getMember(id)));
     }
 
 }

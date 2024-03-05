@@ -1,11 +1,12 @@
-package com.paldomoa.dto.member;
+package com.paldomoa.member.dto.member;
 
-import com.paldomoa.domain.Member;
-import com.paldomoa.domain.RoleType;
+import com.paldomoa.member.domain.Member;
+import com.paldomoa.member.domain.RoleType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
