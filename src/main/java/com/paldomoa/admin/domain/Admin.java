@@ -9,8 +9,10 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Admin extends BaseTimeEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "admin_id")
     private Long id;
 
     @Column(nullable = false, length = 50)

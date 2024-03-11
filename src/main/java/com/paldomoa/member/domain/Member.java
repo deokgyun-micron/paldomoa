@@ -1,8 +1,12 @@
 package com.paldomoa.member.domain;
 
+import com.paldomoa.board.domain.Board;
 import com.paldomoa.common.domain.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -10,6 +14,7 @@ import lombok.*;
 public class Member extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long id;
 
     @Column(nullable = false, length = 50)
@@ -28,6 +33,10 @@ public class Member extends BaseTimeEntity {
     private String grade;
     private String address;
     private String status;
+
+    @OneToMany(mappedBy = "member")
+    private List<Board> board = new ArrayList<>();
+
 
     @Builder
     public Member(Long id, String email, String password, String nickname, RoleType role, String name, String grade, String address, String status) {
