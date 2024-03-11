@@ -1,16 +1,17 @@
-package com.paldomoa.dto.member;
+package com.paldomoa.admin.dto.member;
 
-import com.paldomoa.domain.Member;
-import com.paldomoa.domain.RoleType;
+import com.paldomoa.member.domain.Member;
+import com.paldomoa.member.domain.RoleType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-public class MemberGetResponse {
+public class AdminGetResponse {
 
     private Long id;
 
@@ -28,8 +29,8 @@ public class MemberGetResponse {
     private String status;
 
 
-    public static MemberGetResponse of(Member member) {
-        return new MemberGetResponse(
+    public static AdminGetResponse of(Member member) {
+        return new AdminGetResponse(
                 member.getId(),
                 member.getEmail(),
                 member.getPassword(),

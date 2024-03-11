@@ -1,9 +1,10 @@
-package com.paldomoa.controller;
+package com.paldomoa.member.controller;
 
-import com.paldomoa.dto.member.MemberGetResponse;
-import com.paldomoa.dto.member.MemberSaveRequest;
-import com.paldomoa.dto.member.MemberSaveResponse;
-import com.paldomoa.service.MemberService;
+import com.paldomoa.auth.annotation.Member;
+import com.paldomoa.member.dto.member.MemberGetResponse;
+import com.paldomoa.member.dto.member.MemberSaveRequest;
+import com.paldomoa.member.dto.member.MemberSaveResponse;
+import com.paldomoa.member.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,7 @@ import java.net.URI;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/members")
+@RequestMapping("/api/members")
 public class MemberController {
 
     private final MemberService memberService;
@@ -25,14 +26,15 @@ public class MemberController {
     public ResponseEntity<Void> join(@RequestBody MemberSaveRequest memberSaveRequest) {
         MemberSaveResponse memberSaveResponse = memberService.saveMember(memberSaveRequest);
         return ResponseEntity
-                .created(URI.create("/api/v1/members/" + memberSaveResponse.getId()))
+                .created(URI.create("/api/" + memberSaveResponse.getId()))
                 .build();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<MemberGetResponse> getCurrentUser(@PathVariable(name = "id") Long id) {
-        log.info("여기다");
-        return ResponseEntity.ok(MemberGetResponse.of(memberService.getMember(id)));
+    @GetMapping("/me")
+    public ResponseEntity<MemberGetResponse> getCurrentUser(@Member Long id) {
+        return ResponseEntity.ok().body(MemberGetResponse.of(memberService.getMember(id)));
     }
+
+
 
 }

@@ -1,15 +1,18 @@
-package com.paldomoa.domain;
+package com.paldomoa.admin.domain;
 
 import com.paldomoa.common.domain.BaseTimeEntity;
+import com.paldomoa.member.domain.RoleType;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Member extends BaseTimeEntity {
+public class Admin extends BaseTimeEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "admin_id")
     private Long id;
 
     @Column(nullable = false, length = 50)
@@ -30,7 +33,7 @@ public class Member extends BaseTimeEntity {
     private String status;
 
     @Builder
-    public Member(Long id, String email, String password, String nickname, RoleType role, String name, String grade, String address, String status) {
+    public Admin(Long id, String email, String password, String nickname, RoleType role, String name, String grade, String address, String status) {
         this.id = id;
         this.email = email;
         this.password = password;

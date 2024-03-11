@@ -1,8 +1,6 @@
-package com.paldomoa.repository;
+package com.paldomoa.member.domain;
 
-import com.paldomoa.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 

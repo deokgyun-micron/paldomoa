@@ -1,9 +1,9 @@
-package com.paldomoa.service;
+package com.paldomoa.member.service;
 
-import com.paldomoa.domain.Member;
-import com.paldomoa.dto.member.MemberSaveRequest;
-import com.paldomoa.dto.member.MemberSaveResponse;
-import com.paldomoa.repository.MemberRepository;
+import com.paldomoa.member.domain.Member;
+import com.paldomoa.member.domain.MemberRepository;
+import com.paldomoa.member.dto.member.MemberSaveRequest;
+import com.paldomoa.member.dto.member.MemberSaveResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
