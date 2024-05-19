@@ -1,8 +1,7 @@
-package com.paldomoa.member.domain;
+package com.paldomoa.common.domain.eenum;
 
 import com.paldomoa.auth.annotation.Admin;
 import com.paldomoa.auth.annotation.Member;
-
 import java.lang.annotation.Annotation;
 import java.rmi.UnexpectedException;
 
@@ -23,10 +22,6 @@ public enum RoleType {
         } catch (NullPointerException | IllegalArgumentException e) {
             throw new UnexpectedException("해당하는 Role이 없습니다.");
         }
-    }
-
-    public Class<? extends Annotation> getAnnotation() {
-        return annotation;
     }
 
 }

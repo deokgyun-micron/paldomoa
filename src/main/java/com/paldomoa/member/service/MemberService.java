@@ -1,44 +1,20 @@
 package com.paldomoa.member.service;
 
-import com.paldomoa.member.domain.Member;
-import com.paldomoa.member.domain.MemberRepository;
-import com.paldomoa.member.dto.member.MemberSaveRequest;
-import com.paldomoa.member.dto.member.MemberSaveResponse;
+import com.paldomoa.member.domain.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @Slf4j
+@RequiredArgsConstructor
 public class MemberService {
 
-    private final MemberRepository members;
+    private final MemberRepository memberRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public MemberService(MemberRepository members) {
-        this.members = members;
-    }
-
-    public MemberSaveResponse saveMember(MemberSaveRequest memberSaveRequest) {
-
-        Member member = Member.builder()
-                .email(memberSaveRequest.getEmail())
-                .password(memberSaveRequest.getPassword())
-                .nickname(memberSaveRequest.getNickname())
-                .name(memberSaveRequest.getName())
-                .address(memberSaveRequest.getAddress())
-                .role(memberSaveRequest.getRole())
-                .grade(memberSaveRequest.getGrade())
-                .status(memberSaveRequest.getStatus())
-                .build();
-
-        Member saveMember = members.save(member);
-        log.info(saveMember.toString());
-        return MemberSaveResponse.from(saveMember);
-    }
-
-    public Member getMember(Long id) {
-        return members.findById(id).orElse(Member.builder().build());
-    }
 
 }

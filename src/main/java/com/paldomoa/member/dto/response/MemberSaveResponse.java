@@ -1,4 +1,4 @@
-package com.paldomoa.member.dto.member;
+package com.paldomoa.member.dto.response;
 
 import com.paldomoa.member.domain.Member;
 import lombok.Getter;

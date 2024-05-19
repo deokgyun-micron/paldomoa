@@ -1,53 +1,51 @@
 package com.paldomoa.member.domain;
 
-import com.paldomoa.board.domain.Board;
+import com.paldomoa.common.domain.Address;
 import com.paldomoa.common.domain.BaseTimeEntity;
-import jakarta.persistence.*;
-import lombok.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.paldomoa.common.domain.eenum.RoleType;
+import com.paldomoa.member.dto.request.MemberSaveRequest;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Entity
 public class Member extends BaseTimeEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
     private Long id;
 
     @Column(nullable = false, length = 50)
     private String email;
 
-    @Column(nullable = false, length = 128)
+    @Column(nullable = false, length = 68)
     private String password;
 
     @Column(nullable = false, length = 30)
     private String nickname;
 
-    @Enumerated(EnumType.STRING)
-    private RoleType role;
+    @Embedded
+    private Address address;
 
-    private String name;
-    private String grade;
-    private String address;
-    private String status;
+    private String imageUrl;
 
-    @OneToMany(mappedBy = "member")
-    private List<Board> board = new ArrayList<>();
+    private RoleType roleType;
 
-
-    @Builder
-    public Member(Long id, String email, String password, String nickname, RoleType role, String name, String grade, String address, String status) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.nickname = nickname;
-        this.role = role;
-        this.name = name;
-        this.grade = grade;
-        this.address = address;
-        this.status = status;
+    public Member(MemberSaveRequest request, PasswordEncoder passwordEncoder) {
+        this.email = request.email();
+        this.password = passwordEncoder.encode(request.password());
+        this.nickname = request.nickname();
+        this.address = new Address(request.street(), request.city(), request.zipcode());
     }
 }

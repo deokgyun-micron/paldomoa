@@ -2,14 +2,10 @@ package com.paldomoa.admin.service;
 
 import com.paldomoa.admin.domain.AdminRepository;
 import com.paldomoa.member.domain.Member;
-import com.paldomoa.member.domain.MemberRepository;
-import com.paldomoa.member.dto.member.MemberSaveRequest;
-import com.paldomoa.member.dto.member.MemberSaveResponse;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @Transactional

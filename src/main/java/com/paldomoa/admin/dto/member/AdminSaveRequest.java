@@ -1,6 +1,6 @@
 package com.paldomoa.admin.dto.member;
 
-import com.paldomoa.member.domain.RoleType;
+import com.paldomoa.common.domain.eenum.RoleType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

@@ -1,7 +1,6 @@
 package com.paldomoa.auth.domain;
 
-import com.paldomoa.member.domain.RoleType;
-
+import com.paldomoa.common.domain.eenum.RoleType;
 import java.rmi.UnexpectedException;
 
 public class AuthPayload {
@@ -16,8 +15,8 @@ public class AuthPayload {
     }
 
     private void validate(RoleType roleType) throws UnexpectedException {
-        if(roleType == null) {
-            throw new UnexpectedException("role은 null이 될 수 없습니다.");
+        if (roleType == null) {
+            throw new UnexpectedException("ROLE은 null이 될 수 없습니다.");
         }
     }
 
