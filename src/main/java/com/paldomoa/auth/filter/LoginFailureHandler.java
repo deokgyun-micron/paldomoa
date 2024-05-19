@@ -17,6 +17,7 @@ public class LoginFailureHandler extends SimpleUrlAuthenticationFailureHandler {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); //401 인증 실패
         response.getWriter().write("fail");
         log.info("로그인 실패");
+        log.info("TODO");
     }
 
 }
